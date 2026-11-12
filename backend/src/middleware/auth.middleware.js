@@ -39,3 +39,17 @@ export const protect = async (req, res, next) => {
     });
   }
 };
+
+// Admin-only authorization middleware
+export const adminOnly = (req, res, next) => {
+  // Check whether logged-in user is an admin
+  if (req.user && req.user.role === "admin") {
+    return next();
+  }
+
+  // Reject access for normal users
+  return res.status(403).json({
+    success: false,
+    message: "Access denied. Admin only.",
+  });
+};

@@ -9,6 +9,7 @@ import connectDB from "./src/config/database.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import profileRoutes from "./src/routes/profile.routes.js";
 import walletRoutes from "./src/routes/wallet.routes.js";
+import adminRoutes from "./src/routes/admin.routes.js";
 
 dotenv.config();
 
@@ -39,6 +40,9 @@ app.use("/api/profile", profileRoutes);
 
 // user wallet 
 app.use("/api/wallet", walletRoutes);
+
+// Admin Routes
+app.use("/api/admin", adminRoutes);
 
 // Rate limiting
 const limiter = rateLimit({
